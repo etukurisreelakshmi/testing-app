@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Counter from './Counter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={userInput:''}
+    }
+    inputChangeHandler=(event)=>{
+        this.setState({userInput:event.target.value});
+    };
+
+    render(){
+        return(
+            <div>
+                <input type="text" onChange={this.inputChangeHandler} value={this.state.userInput}/>
+                <p>{this.state.userInput}</p>
+                <Counter inputLength={this.state.userInput.length}/>
+            </div>
+        )
+    }
 }
 
 export default App;
